@@ -4,9 +4,55 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Atlas Factura Movil</title>
 </head>
+<script>
+
+function calcularMasaCorporal()
+{  
+    var valorEstatura = document.getElementById("idestatura");
+    var valorPeso 	  = document.getElementById("idpeso");
+    var valor = valorPeso.value/(valorEstatura.value/100);
+
+	document.getElementById("idresultado").value =valor;
+	var comentario='';
+	if (valor < 18.5){
+		comentario = "estas langaruto a comer";
+	} else if (valor>= 18.5 && valor < 25){	
+	     comentario = "ta al pelo";
+	} else if (valor >= 25){
+	     comentario = "esta como gordito";
+	} else if (valor > 30){
+		comentario = "a hacer ejercicio";
+	} else if (valor> 40){
+		comentario = "a correr mk que te vas es a morir";
+	}
+	document.getElementById("idtext").value ="como";
+	var y=document.getElementById("idtext");
+		y.innerHTML= comentario ;
+}
+</script>
 
 <body>
-  <h1> hola mundo   </h1>
+  <h1> Calculo de sobrepeso   </h1>
+    <table width="200" border="1">
+      <tr>
+        <td><label for="lidestatura">estatura (cm)</label></td>
+        <td><input type="text" name="idestatura" id="idestatura" /></td>
+      </tr>
+      <tr>
+        <td><label for="lidpeso">Peso en kilogramos</label></td>
+        <td><input type="text" name="idpeso" id="idpeso" /></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center"><input type="submit" name="idcalcular" id="idcalcular" value="Calcular" onclick="calcularMasaCorporal()"/></td>
+      </tr>
+      <tr>
+        <td><label for="lidresultado">Su Indice de Masa Corporal es= </label></td>
+        <td><input type="text" name="idresultado" id="idresultado" /></td>
+      </tr>      
+      <tr>
+        <td colspan="2"><p id="idtext"></p></td>
+      </tr>   
+    </table>
 </body>
 </html>
 
